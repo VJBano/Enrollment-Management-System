@@ -7,6 +7,7 @@ import State from "../../hooks/state";
 import Application from "../../pages/Application";
 import Department from "../../pages/Department";
 import Students from "../../pages/Students";
+import Course from "../../pages/Course";
 
 const MainBoard = () => {
 
@@ -34,6 +35,10 @@ const MainBoard = () => {
         setPage(<Students/>)
         break;
 
+      case 5:
+        setPage(<Course/>)
+        break;
+
       default :
 
       setPage(<Dashboard/>)
@@ -49,7 +54,6 @@ const MainBoard = () => {
       style={{
         width: "100%",
         height: "100%",
-
         display: "flex",
         justifyContent: "flex-start",
         flexDirection: "row",
