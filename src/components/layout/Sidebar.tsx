@@ -9,19 +9,22 @@ import DynamicFormIcon from "@mui/icons-material/DynamicForm";
 import MapsHomeWorkIcon from "@mui/icons-material/MapsHomeWork";
 import PeopleAltIcon from "@mui/icons-material/PeopleAlt";
 import List from "@mui/material/List";
-import { useState, type SyntheticEvent } from "react";
+import { SyntheticEvent } from "react";
 import State from "../../hooks/state";
+import SchoolIcon from '@mui/icons-material/School';
 
 const sidebarOptions = [
   { id: 1, title: "Dashboard", icon: <DashboardIcon /> },
   { id: 2, title: "Application", icon: <DynamicFormIcon /> },
   { id: 3, title: "Department", icon: <MapsHomeWorkIcon /> },
   { id: 4, title: "Students", icon: <PeopleAltIcon /> },
+  { id: 5, title: "Course", icon: <SchoolIcon /> },
+  
 ];
 
 const Sidebar = () => {
 
-  const {setOption, option} = State.optionStore()
+  const {setOption, option} = State.optionStore();
   const handleListItemClick = (
     event: React.MouseEvent<HTMLDivElement, MouseEvent>,
     index: number
@@ -54,16 +57,16 @@ const Sidebar = () => {
               selected={option === opt.id}
               onClick={(e) => handleListItemClick(e, opt.id)}
               sx={{
-                margin: 1,
-                "&.Mui-selected": {
-                  backgroundColor: "#02A7DD",
-                },
-                "&:hover": {
-                  backgroundColor: "#86B6F6",
-                },
-                "&.Mui-selected:hover": {
-                    backgroundColor: "#02A7DD",
-                  },
+                // margin: 1,
+                // "&.Mui-selected": {
+                //   backgroundColor: "#02A7DD",
+                // },
+                // "&:hover": {
+                //   backgroundColor: "#86B6F6",
+                // },
+                // "&.Mui-selected:hover": {
+                //     backgroundColor: "#02A7DD",
+                //   },
               }}
               key={opt.id}
             >
@@ -88,13 +91,13 @@ const Sidebar = () => {
 };
 
 export const SidebarMobile = () => {
-  const [optionCliked, setOptionClicked] = useState(1);
 
+  const {setOption, option} = State.optionStore();
   const handleListItemClick = (event: SyntheticEvent, index: number) => {
     event.preventDefault();
-    setOptionClicked(index);
+    setOption(index);
   };
-  console.log(optionCliked);
+  console.log(option);
 
   return (
     <Container
@@ -112,7 +115,7 @@ export const SidebarMobile = () => {
         {sidebarOptions.map((opt) => {
           return (
             <ListItemButton
-              selected={optionCliked === opt.id}
+              selected={option === opt.id}
               onClick={(e) => handleListItemClick(e, opt.id)}
               sx={{
                 margin: 1,
